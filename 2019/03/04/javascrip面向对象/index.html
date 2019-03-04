@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>JavaScript面向对象 | Hexo</title>
+  <meta name="description" content="###第一天 javascript: ECMAScript (语法–规范) DOM：文档对象模型，提供了对文档的常见操作（增删改查），API操作HTML BOM ：浏览器对象模型，浏览器+屏幕相关  JS数据类型 基本数据类型 （值类型） 字符串：string 数值：number 布尔值：true | false null : null (null的类型为obje，是一个遗留的bug) 变量的值不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript面向对象">
+<meta property="og:url" content="http://yoursite.com/2019/03/04/javascrip面向对象/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="###第一天 javascript: ECMAScript (语法–规范) DOM：文档对象模型，提供了对文档的常见操作（增删改查），API操作HTML BOM ：浏览器对象模型，浏览器+屏幕相关  JS数据类型 基本数据类型 （值类型） 字符串：string 数值：number 布尔值：true | false null : null (null的类型为obje，是一个遗留的bug) 变量的值不">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-04T08:21:46.014Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript面向对象">
+<meta name="twitter:description" content="###第一天 javascript: ECMAScript (语法–规范) DOM：文档对象模型，提供了对文档的常见操作（增删改查），API操作HTML BOM ：浏览器对象模型，浏览器+屏幕相关  JS数据类型 基本数据类型 （值类型） 字符串：string 数值：number 布尔值：true | false null : null (null的类型为obje，是一个遗留的bug) 变量的值不">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yoursite.com/2019/03/04/javascrip面向对象/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/cofess" target="_blank">
+          <img class="img-circle img-rotate" src="/images/lzh.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Lee</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> GuangZhou, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle="tooltip" data-placement="top"><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle="tooltip" data-placement="top"><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+
+    
+      
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/03/04/JavaScript面向对象/" class="title">Hello World</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-03-04T08:18:19.540Z" itemprop="datePublished">2019-03-04</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/03/04/javascrip面向对象/" class="title">JavaScript面向对象</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-03-04T08:15:27.191Z" itemprop="datePublished">2019-03-04</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/03/04/hello-world/" class="title">Hello World</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-03-04T07:55:06.869Z" itemprop="datePublished">2019-03-04</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-javascrip面向对象" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript面向对象
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/03/04/javascrip面向对象/" class="article-date">
+	  <time datetime="2019-03-04T08:15:27.191Z" itemprop="datePublished">2019-03-04</time>
+	</a>
+</span>
+        
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/03/04/javascrip面向对象/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>###第一天</p>
+<h4 id="javascript"><a href="#javascript" class="headerlink" title="javascript:"></a>javascript:</h4><ul>
+<li>ECMAScript (语法–规范)</li>
+<li>DOM：文档对象模型，提供了对文档的常见操作（增删改查），API操作HTML</li>
+<li>BOM ：浏览器对象模型，浏览器+屏幕相关</li>
+</ul>
+<h5 id="JS数据类型"><a href="#JS数据类型" class="headerlink" title="JS数据类型"></a>JS数据类型</h5><ul>
+<li>基本数据类型 （值类型）<ul>
+<li>字符串：string</li>
+<li>数值：number</li>
+<li>布尔值：true | false</li>
+<li>null : null (null的类型为obje，是一个遗留的bug)<ul>
+<li>变量的值不会主动为null，除非人为设置为null</li>
+</ul>
+</li>
+<li>undefined<ul>
+<li>声明变量但没有给变量赋值，该变量的值为undefined</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>复杂数据类型（引用类型）<ul>
+<li>数组（Array）</li>
+<li>对象 （Object）</li>
+<li>函数（Function）</li>
+<li>Error对象</li>
+<li>Math对象</li>
+<li>String字符串对象</li>
+<li>Numbe 数值r对象</li>
+<li>Boolean布尔类型对象</li>
+</ul>
+</li>
+<li>值类型:字符串 + 布尔类型 + null + undefined + 数字<ul>
+<li>存储的是具体的值</li>
+</ul>
+</li>
+<li>引用类型:对象类型(Object Function Date Math String Number)<ul>
+<li>存储的是地址（引用），通过该引用可以找到对应的数据</li>
+</ul>
+</li>
+</ul>
+<h4 id="js相等操作符"><a href="#js相等操作符" class="headerlink" title="js相等操作符"></a>js相等操作符</h4><ul>
+<li>= 赋值   <ul>
+<li>var str  = ‘demo’;把右边的值赋值给左边的变量</li>
+</ul>
+</li>
+<li>== 相等  <ul>
+<li>比较两个值是否相等  <strong>表达式1</strong> || <strong>表达式2</strong> 返回的结果为布尔值</li>
+<li>值相等</li>
+</ul>
+</li>
+<li>=== 全等  <ul>
+<li>类型和值必须全等</li>
+<li>返回的值为布尔值</li>
+<li>数组是引用类型数据，存储的是地址而非具体的数据</li>
+</ul>
+</li>
+</ul>
+<p>window对象有NAME属性</p>
+<h4 id="函数的相关知识点"><a href="#函数的相关知识点" class="headerlink" title="函数的相关知识点"></a>函数的相关知识点</h4><h5 id="函数的创建"><a href="#函数的创建" class="headerlink" title="函数的创建"></a>函数的创建</h5><h5 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h5><ul>
+<li>形式参数（形参），形参相当于是函数体内声明的局部变量，命名无意义<ul>
+<li>形参叫声明名字都可以，作用是占位和接受实参</li>
+</ul>
+</li>
+<li>实际参数（实参），函数调用的时候，传递给函数的具体的数据</li>
+<li>函数在JavaScript中是一等公民<ul>
+<li>在代码中凡是对象可以出现的地方（变量 | 函数参数 | 函数的返回值），函数都可以出现</li>
+<li>专业术语：高阶函数<ul>
+<li>如果一个函数的参数是参数或者返回值是函数，那么这样的函数就被叫做高阶函数</li>
+</ul>
+</li>
+<li>专业术语：回调函数<ul>
+<li>如果一个函数作为其他函数的参数，那么该函数就被叫做回调函数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="函数的调用"><a href="#函数的调用" class="headerlink" title="函数的调用"></a>函数的调用</h5><ul>
+<li>语法：函数名（）；</li>
+<li>关键：把实参赋值给形参，执行函数体</li>
+</ul>
+<h5 id="函数总结"><a href="#函数总结" class="headerlink" title="函数总结"></a>函数总结</h5><ul>
+<li><p>如果函数的参数是值类型的数据，那么在函数内部修改形参不会影响到实参的值</p>
+</li>
+<li><p>如果函数的参数是引用类型的数据，那么函数内部修改形参会影响刀实参的值，他们是共享的。</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;name:&quot;zs&quot;,color:&quot;green&quot;&#125;;</span><br><span class="line">function fn2(objT) &#123;</span><br><span class="line">  console.log(&quot;接受到的数据:&quot;,objT.name);</span><br><span class="line">  console.log(&quot;修改nameT(形参)的值&quot;);</span><br><span class="line">  //objT.name = &quot;老王&quot;;</span><br><span class="line">  objT = &#123;name:&quot;wc&quot;,color:&quot;red&quot;&#125;;</span><br><span class="line">  console.log(&quot;修改后的数据:&quot;,objT.name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="JS对象的动态特性"><a href="#JS对象的动态特性" class="headerlink" title="JS对象的动态特性"></a>JS对象的动态特性</h5><ul>
+<li>JavaScript语言支持动态的设置（增加|删除|查询|修改）对象的内容（属性|方法）</li>
+<li>JavaScript语言很灵活</li>
+<li>补充点：在window全局对象中存在默认的name属性，是一个空字符串</li>
+<li>访问（查询）对象的成员<ul>
+<li>点语法：对象.需要访问的key</li>
+<li>中括号：对象[‘key’];</li>
+</ul>
+</li>
+<li>修改对象的成员<ul>
+<li>给对象成员赋值</li>
+</ul>
+</li>
+</ul>
+<h4 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h4><h5 id="in关键字"><a href="#in关键字" class="headerlink" title="in关键字"></a>in关键字</h5><ul>
+<li><p>for…in循环中，遍历对象|数组</p>
+</li>
+<li><p>检查对象中是否存在指定的属性</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">example:</span><br><span class="line">var obj = &#123;</span><br><span class="line">    name: &apos;巴拉巴拉&apos;,</span><br><span class="line">    age: 88;</span><br><span class="line">&#125;</span><br><span class="line">console.log(&apos;name&apos; in obj) //检查obj对象中是否存在name属性</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>属性为：键-值 对</p>
+</li>
+</ul>
+</li>
+<li><p>in关键字用来处理数组</p>
+<ul>
+<li><p>补充知识点：<strong>数组本身也是对象</strong>，<strong>函数本身也是对象</strong></p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1,2,3,4,5,6];</span><br><span class="line">console.log(6 in arrM);</span><br><span class="line">// 检查的是数组中是否存在6这个索引，而不是6这个元素；</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>indexOf ：获取当前元素在数组中的索引，如果存在就返回索引，否则返回-1</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1,2,3,4,5,6];</span><br><span class="line">if (arr.indexOf(5))&#123;</span><br><span class="line">    console.log(5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="delete关键字"><a href="#delete关键字" class="headerlink" title="delete关键字"></a>delete关键字</h5><ul>
+<li>作用：删除对象的属性</li>
+<li>语法：delete 对象.成员| 对象[ 成员 ]</li>
+<li>注意点：<ul>
+<li>不能删除使用var声明的变量</li>
+<li>可以删除没有使用var声明的变量</li>
+<li>关键字有返回值：布尔类型的值（true表示删除成功，false表示删除失败）</li>
+<li>删除对象中不存在的成员，那么返回true</li>
+</ul>
+</li>
+</ul>
+<h5 id="break和continue"><a href="#break和continue" class="headerlink" title="break和continue"></a>break和continue</h5><ul>
+<li><p>break：退出整个循环，执行循环后的代码</p>
+</li>
+<li><p>continue：退出当前循环，执行下一次循环</p>
+</li>
+<li><p>补充知识点：</p>
+<ul>
+<li>JavaScript语句结构<ul>
+<li>顺序执行</li>
+<li>条件和分支：if…else  |   switch</li>
+<li>循环： while | do…while | for  | for…in</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">example:</span><br><span class="line">var count = 10;</span><br><span class="line">for (var i = 0;i &lt; count; i++)&#123;</span><br><span class="line">    if (i == 5)&#123;</span><br><span class="line">        continue; // 当i等于5的时候，跳出当前循环执行下一次；</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(i);</span><br><span class="line">&#125;</span><br><span class="line">结果为：</span><br><span class="line">1，2，3，4，6，7，8，9</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="第二天"><a href="#第二天" class="headerlink" title="第二天"></a>第二天</h3><h4 id="异常捕获结构的基本使用"><a href="#异常捕获结构的基本使用" class="headerlink" title="异常捕获结构的基本使用"></a>异常捕获结构的基本使用</h4><ul>
+<li><p>异常</p>
+<ul>
+<li>正常情况下，当代码执行出错的时候，就会进入中断状态（报错），后面的代码都不执行</li>
+<li>有可能遇到的需求：当知道有一段代码可能出错，但是需要在他出错的折中情况下还能继续运行</li>
+</ul>
+</li>
+<li><p>代码：</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">    // 将可能出错的代码放在此处</span><br><span class="line">    // 如果出错，那么就执行catch里面的代码块，如果没有出错，那么catch代码块就不会执行</span><br><span class="line">&#125; catch (e) &#123;</span><br><span class="line">    // 当出错的时候就会执行</span><br><span class="line">    // e是一个错误信息</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>补充知识点：throw  抛出一个异常 （如果抛出了异常，那么后面的代码将不会执行）</p>
+</li>
+<li><p>完整结构：</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">    </span><br><span class="line">&#125; catch() &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">thorw errror</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="面向过程和面向对象编程"><a href="#面向过程和面向对象编程" class="headerlink" title="面向过程和面向对象编程"></a>面向过程和面向对象编程</h4><ul>
+<li>面向过程和面向对象都是解决问题的一种方式</li>
+</ul>
+<h5 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程"></a>面向过程</h5><ul>
+<li>面向过程是把要解决的问题<strong>拆分成一个个</strong>的具体的步骤，<strong>严格按顺序</strong>来处理(函数)</li>
+<li>面向过程关注点：<ul>
+<li>解决问题的每一个步骤</li>
+</ul>
+</li>
+</ul>
+<h5 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h5><ul>
+<li><p>面向对象是<strong>找到合适的对象</strong>来解决问题</p>
+</li>
+<li><p>面向对象是对面向过程的封装</p>
+</li>
+<li><p>面向对象的关注点</p>
+<ul>
+<li>解决问题需要的对象</li>
+</ul>
+</li>
+<li><p>面向对象变成相关概念：</p>
+<ul>
+<li>具体的对象</li>
+<li>对象都有什么</li>
+<li>面向对象编程：合适的对象</li>
+</ul>
+</li>
+<li><p>面向对象的三大特性：</p>
+<ul>
+<li>封装</li>
+<li>继承</li>
+<li>多态</li>
+</ul>
+</li>
+</ul>
+<h5 id="面向对象的基本概念"><a href="#面向对象的基本概念" class="headerlink" title="面向对象的基本概念"></a>面向对象的基本概念</h5><ul>
+<li>成员：对象的属性和方法</li>
+<li>实例成员：实例对象的属性和方法</li>
+<li>静态成员：构造函数自己的属性和方法</li>
+<li>原型成员：构造函数对应的原型对象的属性和方法</li>
+<li>私有成员：构造函数中声明的变量和函数，因为他们只能再函数内部被访问，随意是私有的</li>
+<li>特权方法：在函数内部使用（访问—读取+设置）私有成员的实例被称为是特权方法</li>
+</ul>
+<p>#####创建对象的4种方式</p>
+<ul>
+<li><p>用字面量方式创建对象</p>
+<ul>
+<li><p>var obj = {</p>
+<p>}</p>
+</li>
+<li><p>缺点：如果批量创建大量相似的对象，会很麻烦（代码重复）</p>
+</li>
+</ul>
+</li>
+<li><p>内置构造函数创建对象</p>
+<ul>
+<li>var obj = new Object( );</li>
+</ul>
+</li>
+<li><p>简单工厂函数创建对象</p>
+<ul>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建简单工厂函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createObj</span> = (<span class="params">name,age,sex</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">    obj.name = name;</span><br><span class="line">    obj.age = age;</span><br><span class="line">    obj.sex = sex;</span><br><span class="line">    obj.eat = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">'吃了'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用工厂函数创建对象</span></span><br><span class="line"><span class="keyword">var</span> obj1 = createObj(<span class="string">'zs'</span>,<span class="number">18</span>,<span class="string">'男'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>自定构造函数创建对象</p>
+<ul>
+<li><p>自定构造函数：函数名默认大写字母开头</p>
+</li>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建自定构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CreatePerson</span>(<span class="params">nameValue,ageValue,sexValue</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = nameValue;</span><br><span class="line">    <span class="keyword">this</span>.age = ageValue;</span><br><span class="line">    <span class="keyword">this</span>.sex = sexValue;</span><br><span class="line">    <span class="keyword">this</span>.showInfo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="keyword">this</span>.age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 构造函数实例化</span></span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> CreatePerson(<span class="string">'张三'</span>，<span class="number">20</span>，<span class="string">'男'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义构造函数创建对象过程中的执行细节</p>
+<ul>
+<li>默认会创建一个空对象</li>
+<li>默认把创建好的空对象赋值给this</li>
+<li>默认设置this的原型对象为当前构造函数的原型对象</li>
+<li>通过this来添加属性和方法</li>
+<li>默认会把内部新创建的对象返回   <strong>return this</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>自定构造函数和工厂函数创建对象的对比</p>
+<ul>
+<li>构造函数的首字母要求大写</li>
+<li>在使用函数创建对象的时候，需要使用new来调用</li>
+<li>在函数内部不需要再主动的创建Object类型的对象</li>
+<li>在函数内部不要主动的把创建好的对象return</li>
+</ul>
+</li>
+<li><p>自定义构造函数创建对象的返回值情况</p>
+<ul>
+<li>默认情况，返回的内部新创建的实例对象（this)</li>
+<li>主动添加return<ul>
+<li>如果返回的是值类型的数据，那么会被忽略，真正返回的还是this</li>
+<li>如果返回的是引用类型的数据，那么就替换this直接返回<ul>
+<li>例:  return [1,2,3,4];</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>自定义构造函数创建对象存在的问题</p>
+<ul>
+<li>如果创建的对象非常多，而函数体是一样的，就会造成资源的浪费</li>
+</ul>
+</li>
+<li><p>构造函数知识点：</p>
+<ul>
+<li><p>构造器属性 （constructor）</p>
+<ul>
+<li><p>作用：能通过该属性得到当前对象的类型（构造函数的名称）</p>
+</li>
+<li><p>该属性只想的是创建当前对象的构造函数</p>
+</li>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建自定构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CreatePerson</span>(<span class="params">nameValue,ageValue,sexValue</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = nameValue;</span><br><span class="line">    <span class="keyword">this</span>.age = ageValue;</span><br><span class="line">    <span class="keyword">this</span>.sex = sexValue;</span><br><span class="line">    <span class="keyword">this</span>.showInfo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="keyword">this</span>.age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 构造函数实例化</span></span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> CreatePerson(<span class="string">'张三'</span>，<span class="number">20</span>，<span class="string">'男'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//得到当前对象的类型</span></span><br><span class="line"><span class="keyword">if</span> (person1.constructor == CreatePerson)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'类型：Person'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//判断类型</span></span><br><span class="line"><span class="built_in">console</span>.log(person <span class="keyword">instanceof</span> CreatePerson);<span class="comment">// 返回true</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>构造函数的调用和命名</p>
+<ul>
+<li>构造函数本身和普通的函数没有区别</li>
+<li>为了认为的区分构造函数和普通的函数，约定构造函数的首字母大写</li>
+<li>构造函数可以像普通函数一样来进行调用，此时内部的this指向window</li>
+<li><strong>重点</strong>：<strong>构造函数需要使用new来调用</strong><ul>
+<li><strong>new</strong>关键字的作用：创建新的对象并且赋值给this；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="this"><a href="#this" class="headerlink" title="this"></a>this</h5><ul>
+<li>this：指针，总是指向一个对象（引用类型）</li>
+<li>在全局作用指向window</li>
+<li>在函数里的this<ul>
+<li>this指向谁由函数的调用方式来决定</li>
+<li>普通函数调用    fn( ) ;    this 指向 window</li>
+<li>对象的方法调用     obj.fn( ) ;    this 指向 obj</li>
+<li>构造函数调用 new CreatePerson( )  ;  this 指向内部新创建的实例对象</li>
+<li>函数上下文调用  call | apply ； this 指向call方法或者是apply方法的第一个参数</li>
+</ul>
+</li>
+</ul>
+<h5 id="原型对象"><a href="#原型对象" class="headerlink" title="原型对象"></a>原型对象</h5><ul>
+<li><p>每一个构造函数都有一个与之相互关联的对象，该对象被称为原型对象</p>
+</li>
+<li><p>默认的原型对象是一个Object类型的空对象（拥有constructor属性）</p>
+</li>
+<li><p>访问原型对象</p>
+<ul>
+<li>构造函数：构造函数.prototype</li>
+<li>实例对象：实例对象<strong>.</strong> _ _proto _ _</li>
+</ul>
+</li>
+<li><p>设置原型对象：</p>
+<ul>
+<li><p>构造函数的原型对象替换为一个新创建的对象</p>
+<ul>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype = &#123;</span><br><span class="line">  <span class="keyword">constructor</span>:Person,</span><br><span class="line">  showInfo:function () &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="keyword">this</span>.className);</span><br><span class="line">  &#125;,</span><br><span class="line">  showName:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 注意点：</span></span><br><span class="line">  <span class="number">1.</span>需要注意顺序，应该在替换原型对象之后再创建实例对象</span><br><span class="line">  <span class="number">2.</span>区分类型，修正构造器属性</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="实例对象和实例化过程"><a href="#实例对象和实例化过程" class="headerlink" title="实例对象和实例化过程"></a>实例对象和实例化过程</h5><ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age) &#123;</span><br><span class="line">  this.name = name;</span><br><span class="line">  this.age = age;</span><br><span class="line">  this.showInfo = function () &#123;</span><br><span class="line">    console.log(this.name + this.age);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.color = &quot;red&quot;;</span><br><span class="line">Person.prototype.showColor = function () &#123;</span><br><span class="line">  console.log(this.color);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var p1 = new Person(&quot;zs&quot;,18);</span><br><span class="line">var p2 = new Person(&quot;ls&quot;,99);</span><br><span class="line"></span><br><span class="line">Person.des = &quot;我是Person&quot;;</span><br><span class="line">Person.showDes = function () &#123;</span><br><span class="line">  console.log(&quot;Msg:&quot;,this.des);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(Person.des);</span><br><span class="line">Person.showDes();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构造函数：Person</p>
+</li>
+<li>构造函数的原型对象：Person.prototype</li>
+<li>原型对象（创建该实例对象的构造函数向关联的原型对象）P1的原型对象</li>
+<li>实例对象：使用new来调用构造函数创建出来的对象就是实例对象</li>
+<li>实例化：构造函数创建实例对象的过程叫做实例化</li>
+<li>对象的成员：对象的属性 + 对象的方法</li>
+<li>实例成员:实例对象身上的属性和方法,实例属性 或者是实例方法 name age showInfo()</li>
+<li>原型成员:对应的原型对象身上的成员,原型属性和原型方法  color showColor()</li>
+<li>静态成员:直接添加在构造函数自己身上的属性和方法<ul>
+<li>注意点：<ul>
+<li>静态成员只有构造函数可以直接访问，实例对象无法访问</li>
+<li>构造函数无法访问实例对象的成员</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="关键字-1"><a href="#关键字-1" class="headerlink" title="关键字"></a>关键字</h5><ul>
+<li><p>检查对象中是否存在指定的属性</p>
+<ul>
+<li>in关键字    实例成员 &amp;&amp; 原型成员</li>
+<li>hasOwnProperty（） 实例成员</li>
+</ul>
+</li>
+<li><p>判断某个对象是否是指定实例对象的原型对象</p>
+<ul>
+<li><p>isPrototypeOf( )</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(Person.prototype.isPrototypeOf(p1));</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>instanceof</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//检查Person构造函数的原型对象是否在p1的原型链上.</span><br><span class="line">console.log(p1 instanceof Person);  //true</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>作用相同</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="原型链的结构"><a href="#原型链的结构" class="headerlink" title="原型链的结构"></a>原型链的结构</h5><ul>
+<li>每一个实例对象都是由构造函数创建出来的</li>
+<li>每一个构造函数都有默认关联的原型对象</li>
+<li>原型对象本身也是对象，所以它也有自己的构造函数</li>
+<li>原型对象的构造函数也由默认关联的原型对象<ul>
+<li>以上就构成了一种链式的访问结构，称为原型链</li>
+<li>Object.prototype是原型链的终点</li>
+</ul>
+</li>
+</ul>
+<h5 id="面向对象继承的实现方式"><a href="#面向对象继承的实现方式" class="headerlink" title="面向对象继承的实现方式"></a>面向对象继承的实现方式</h5><ul>
+<li><p>混入式继承（拷贝 / 复制）</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var obj1 = &#123;name:&quot;zs&quot;,age:23,car:&#123;type:&quot;A&quot;,number:&quot;666666&quot;&#125;&#125;</span><br><span class="line">var obj2 = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">//混入式继承(拷贝)</span><br><span class="line">for(var key in obj1)</span><br><span class="line">&#123;</span><br><span class="line">  obj2[key] = obj1[key];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 通过遍历obj1的成员并赋值给Obj2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>存在的问题：如果拷贝的对象中属性对应的是引用类型，那么会存在共享问题</p>
+</li>
+</ul>
+</li>
+<li><p>原型式继承 （能够访问父类的原型对象中的原型成员）</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function Animal() &#123;</span><br><span class="line">  this.des = &quot;我是动物类型&quot;;</span><br><span class="line">&#125;</span><br><span class="line">Animal.prototype.color = &quot;red&quot;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function Person(name) &#123;</span><br><span class="line">  this.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//002 设置原型对象</span><br><span class="line">Person.prototype = Animal.prototype;</span><br><span class="line"></span><br><span class="line">//003 创建对象</span><br><span class="line">var p1 = new Person(&quot;zs&quot;,&quot;H5&quot;);</span><br><span class="line">console.log(p1);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>扩展内置对象</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//在开发中可能会需要对内置对象进行扩展</span><br><span class="line">var arr1  = [1,23,4];</span><br><span class="line">var arr2 = [&quot;demo&quot;,&quot;test&quot;,&quot;ASp&quot;,&quot;----&quot;];</span><br><span class="line"></span><br><span class="line">//方式(1)</span><br><span class="line">// arr1.getLength = function () &#123;</span><br><span class="line">//   return this.length;</span><br><span class="line">// &#125;</span><br><span class="line">// arr2.getLength = function () &#123;</span><br><span class="line">//   return this.length;</span><br><span class="line">// &#125;</span><br><span class="line"></span><br><span class="line">//方式(2)</span><br><span class="line">Array.prototype.getLength = function () &#123;</span><br><span class="line">    return this.length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>问题：</p>
+<ul>
+<li>多人开发的时候可能会出现一些奇怪的BUG （譬如使用for…in循环遍历数组）</li>
+<li>在访问属性和方法的时候，会搜索（查找–遍历），如果增加太多的方法，在访问成员的时候性能会降低。</li>
+</ul>
+</li>
+<li><p>安全的扩展内置对象</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function MyArray(name) &#123;</span><br><span class="line">  this.name = name;</span><br><span class="line">  this.sayHi = function () &#123;</span><br><span class="line">    console.log(&quot;Hi!&quot; + this.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MyArray.prototype = new Array();</span><br><span class="line">MyArray.prototype.sayHello = function () &#123;</span><br><span class="line">    console.log(&quot;Hello!&quot; + this.name);</span><br><span class="line">&#125;</span><br><span class="line">var arr1 = new MyArray(&quot;数字&quot;);</span><br><span class="line">arr1.push(1,2,3,4);</span><br><span class="line">console.log(arr1);</span><br><span class="line"></span><br><span class="line">var arr2 = new MyArray(&quot;字符串&quot;);</span><br><span class="line">arr2.push(&quot;demoA&quot;,&quot;demoB&quot;);</span><br><span class="line">arr2.sayHi();</span><br><span class="line"></span><br><span class="line">// 使构造函数的原型对象为一个新创建的new Array（）的实例对象</span><br><span class="line">   就可以访问Array原型对象的方法的方法</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>原型链继承</p>
+<ul>
+<li>使子（构造函数）的原型对象设置为父（构造函数）的实例对象，就可以访问父(构造函数)原型对象的成员和方法；<ul>
+<li>可以获取原型成员 + 实例成员（由于父构造函数无法传参，实例成员被写死）</li>
+</ul>
+</li>
+<li>注意点：<ul>
+<li>设置原型链继承的时候，先完成继承，再添加原型成员</li>
+<li>修正构造器属性</li>
+</ul>
+</li>
+<li>问题：<ul>
+<li>无法向构造函数传递参数</li>
+<li>共享的问题</li>
+<li>搜索更长</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>组合继承（原型式继承 + 原型链继承）（访问实例对象成员 + 访问父类原型对象成员）</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//理想中的继承:获取父构造函数的实例成员 + 原型成员</span><br><span class="line">//借用构造函数继承 -- 实例成员</span><br><span class="line">//原型式继承-----     原型成员</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="Object-Create"><a href="#Object-Create" class="headerlink" title="Object Create"></a>Object Create</h5><ul>
+<li><p>创建对象：创建一个新的对象，并设置该对象的原型对象为参数；</p>
+</li>
+<li><p>如何创建一个没有原型对象的空对象：</p>
+<ul>
+<li><p>Object.create(null)；</p>
+</li>
+<li><p>function  MyObject( ){</p>
+<p>MyObject.prototype =  null ;</p>
+<p> }</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="call-apply"><a href="#call-apply" class="headerlink" title="call,apply"></a>call,apply</h5><ul>
+<li><p>作用</p>
+<ul>
+<li>借用其他对象的方法</li>
+<li>设置函数（方法）中this的指向，指向的使call和apply方法的第一个参数</li>
+</ul>
+</li>
+<li><p>语法：</p>
+<ul>
+<li>call<ul>
+<li>对象1.方法.call（对象2，参数1，参数2，参数3）</li>
+<li>对象2后面的参数为可选参数</li>
+</ul>
+</li>
+<li>apply<ul>
+<li>对象1.方法.call（对象2，[参数1，参数2，参数3]）</li>
+<li>对象2后面的参数需要用数组来传递。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>来源：</p>
+<ul>
+<li>call和apply方法存在于函数对象的原型对象上面</li>
+</ul>
+</li>
+<li><p>区别：</p>
+<ul>
+<li>传递参数的方式不一样</li>
+<li>形参的个数 call：1；apply：2；</li>
+</ul>
+</li>
+</ul>
+<h5 id="Number扩展"><a href="#Number扩展" class="headerlink" title="Number扩展"></a>Number扩展</h5><ul>
+<li>可以使用点语法给内置的Number构造函数的原型对象添加方法<ul>
+<li>如果是number类型的数字，可以直接访问该方法；</li>
+</ul>
+</li>
+</ul>
+<h5 id="基本包装类型"><a href="#基本包装类型" class="headerlink" title="基本包装类型"></a>基本包装类型</h5><ul>
+<li>Boolean</li>
+<li>String</li>
+<li>Number</li>
+</ul>
+<h5 id="Object深入"><a href="#Object深入" class="headerlink" title="Object深入"></a>Object深入</h5><ul>
+<li><p>propertyIsEnumerrable：属性是否是可枚举的（在for循环中打印）、</p>
+<ul>
+<li><p>内置对象的原型成员是不可枚举的</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">实例对象.propertyIsEnumerrable(&apos;实例对象成员&apos;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>valueOf</p>
+<ul>
+<li>如果是使用基本包装类型来调用那么会返回对应的基本值</li>
+<li>如果是其他的引用类型调用返回this</li>
+<li>如果说是日期对象，返回时间戳</li>
+</ul>
+</li>
+<li><p>toString方法</p>
+<ul>
+<li><strong>Object.toString</strong> 和 <strong>Array.toString</strong>不是同一个</li>
+</ul>
+</li>
+</ul>
+<h5 id="Object的静态成员"><a href="#Object的静态成员" class="headerlink" title="Object的静态成员"></a>Object的静态成员</h5><ul>
+<li>create（）创建独享并且设置原型对象</li>
+<li>assign（）合并对象：ES6的方法，合并的时候如果存在同名的成员，后面的会覆盖前面</li>
+<li>getOwnpropertyDescriptors：获取当前对象中所有成员的描述信息（对象）</li>
+<li>getOwnpropertyDescriptor：获取当前对象中指定成员的描述信息（对象）</li>
+<li><p>defineProperty：设置指定属性的配置对象</p>
+<ul>
+<li><p>配置项：</p>
+<ul>
+<li>configurable：控制是否可以配置（删除），一旦设置为false就设置不回来</li>
+<li>enumeralble：设置是否可以被枚举(遍历)</li>
+<li>writable：设置是否可写</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>defineProperty：设置多个属性的配置对象</li>
+<li>key（）获取对象所有的key(仅仅为可枚举的属性)</li>
+<li>getOwnPropertyNames()：获取对象所有的key（和是否可枚举无关）</li>
+<li>is（）检查两个对象是否全等 （同==）</li>
+<li>entries（）把键值对转成数组的形式</li>
+<li>isExtensible（）检查当前对象是否可扩展</li>
+<li>isSealed（）检查当前对象是否是密封</li>
+<li>isFrizen（）检查当前对象是否是冻结</li>
+<li>preventExtensions（）添加（NO） + 修改 + 删除</li>
+<li>seal（）添加（NO） + 修改 + 删除（NO）</li>
+<li>freeze（）添加（NO） + 修改（NO） + 删除（NO）</li>
+</ul>
+<h3 id="第五天"><a href="#第五天" class="headerlink" title="第五天"></a>第五天</h3><h5 id="class类的使用"><a href="#class类的使用" class="headerlink" title="class类的使用"></a>class类的使用</h5><ul>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name,age) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    showName = funciton () &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'姓名:'</span> + <span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">constructor</span>设置的为实例对象的成员；</span><br><span class="line">其他方法为Person原型对象的成员</span><br><span class="line">使用关键字static修饰的方法就是Person构造函数的静态方法</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="惰性函数"><a href="#惰性函数" class="headerlink" title="惰性函数"></a>惰性函数</h5><ul>
+<li><p>定义：某个函数直到第一次使用的时候才被正确的定义</p>
+</li>
+<li><p>特点：这种类型的结构特点时函数可以自更新</p>
+</li>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'foo'</span>);</span><br><span class="line">    foo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'foo foo'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用场景：函数有一些初始化的准备工作要做，且只需执行一次的情况</p>
+</li>
+<li><p>注意点：</p>
+<ul>
+<li>赋值给变量或者对象时，</li>
+<li>函数的属性在更新后会丢失</li>
+</ul>
+</li>
+</ul>
+<p>###第六天</p>
+<h5 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h5><ul>
+<li>简单理解：<ul>
+<li>闭包就是能够读取其他函数内部变量的函数</li>
+<li>在JavaScript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成 “定义在一个函数内部的函数”；</li>
+<li>本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁</li>
+</ul>
+</li>
+<li>闭包的用途：<ul>
+<li>可以读取函数内部的变量</li>
+<li>让函数内部的变量始终保存在内存中</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://yoursite.com/2019/03/04/javascrip面向对象/" title="JavaScript面向对象" target="_blank" rel="external">http://yoursite.com/2019/03/04/javascrip面向对象/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/cofess" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/lzh.jpg" class="img-rounded w-full" alt>
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/cofess" target="_blank"><span class="text-dark">Lee</span><small class="ml-1x">Web Developer</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2019/03/04/JavaScript面向对象/" title="Hello World"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2019/03/04/hello-world/" title="Hello World"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class>
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle="tooltip" data-placement="top"><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle="tooltip" data-placement="top"><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
