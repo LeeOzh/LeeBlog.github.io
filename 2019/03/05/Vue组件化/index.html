@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Vue组件化步骤定义一个组件 Vue.extend( )  1234567let demoCpn = Vue.extend(&amp;#123;    template: `		&amp;lt;div&amp;gt;			&amp;lt;h1&amp;gt;demoCpn&amp;lt;/h1&amp;gt;		&amp;lt;/div&amp;gt;`&amp;#125;)     ####注册一个组件（全局/局部）  Vue.component( )  123456789">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-06T16:43:39.871Z">
+<meta property="og:updated_time" content="2019-03-06T16:57:39.761Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue组件化">
 <meta name="twitter:description" content="Vue组件化步骤定义一个组件 Vue.extend( )  1234567let demoCpn = Vue.extend(&amp;#123;    template: `		&amp;lt;div&amp;gt;			&amp;lt;h1&amp;gt;demoCpn&amp;lt;/h1&amp;gt;		&amp;lt;/div&amp;gt;`&amp;#125;)     ####注册一个组件（全局/局部）  Vue.component( )  123456789">
@@ -387,11 +387,32 @@
 <ul>
 <li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 验证支持传递的数据类型:String,Number,Boolean,Array,Object,Date,Funciton,Symbol</span></span><br><span class="line"></span><br><span class="line">Vue.component(<span class="string">'my-component'</span>,&#123;</span><br><span class="line">    template: <span class="string">'#myComponent'</span>,</span><br><span class="line">    props: &#123;</span><br><span class="line">        <span class="comment">//基础的类型检查</span></span><br><span class="line">        propA: <span class="built_in">Number</span>,</span><br><span class="line">        <span class="comment">// 多个可能传值的类型，</span></span><br><span class="line">        propB: [Sring,<span class="built_in">Number</span>],</span><br><span class="line">        <span class="comment">//required为true时，必填的字符串</span></span><br><span class="line">        propC: &#123;</span><br><span class="line">            type: <span class="built_in">String</span>,</span><br><span class="line">            required: <span class="literal">true</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">//带有默认值的数字 100</span></span><br><span class="line">        propD: &#123;</span><br><span class="line">            type:<span class="built_in">Number</span>,</span><br><span class="line">            <span class="keyword">default</span>: <span class="number">100</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">// 带有默认值的对象</span></span><br><span class="line">        propE: &#123;</span><br><span class="line">            type: <span class="built_in">Object</span>,</span><br><span class="line">            <span class="keyword">default</span> () &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;</span><br><span class="line">                    message: <span class="string">'Hello'</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 </li>
-<li></li>
 </ul>
 </li>
 </ul>
 </li>
+</ul>
+<h5 id="子组件向父组件传递数据"><a href="#子组件向父组件传递数据" class="headerlink" title="子组件向父组件传递数据"></a>子组件向父组件传递数据</h5><ul>
+<li>处理方法：自定义事件</li>
+</ul>
+<p>​     当子组件需要像父组件传递数据时，需要用到自定义事件</p>
+<p>​     V-ON不仅可以监听DOM事件，也可以监听自定义事件</p>
+<ul>
+<li>自定义事件的流程：<ul>
+<li>在子组件中，通过$emit( )来触发定义一个事件</li>
+<li>在父组件中，通过v-on来监听子组件事件</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="父子组件的访问方式"><a href="#父子组件的访问方式" class="headerlink" title="父子组件的访问方式"></a>父子组件的访问方式</h5><h6 id="父组件访问子组件"><a href="#父组件访问子组件" class="headerlink" title="父组件访问子组件"></a>父组件访问子组件</h6><ul>
+<li>$children,</li>
+<li><p>$refs</p>
+<h6 id="子组件访问父组件"><a href="#子组件访问父组件" class="headerlink" title="子组件访问父组件"></a>子组件访问父组件</h6></li>
+<li><p>$parent</p>
+<ul>
+<li>不推荐使用，于组件化的核心思想背离，可复用性差</li>
 </ul>
 </li>
 </ul>
